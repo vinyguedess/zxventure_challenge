@@ -2,6 +2,7 @@
 *.sqlite3
 .env
 .nyc_output
+app
 coverage
 node_modules
 yarn-error.log
