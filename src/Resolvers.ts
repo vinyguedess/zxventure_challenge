@@ -1,15 +1,17 @@
-import PDV from "./Models/PDV";
+import PDVService from "./Services/PDVService";
 
+const pdvs = () => new PDVService().findAll();
 
-const pdvs = (): Promise<Array<PDV>> => PDV.findAll();
+const pdv = obj => new PDVService().findById(obj.id);
 
-const createPdv = ({ data }, request) => {
-    console.log(request.method, data);
-    return null;
-}
-
+const createPdv = ({data}) =>
+    new PDVService().save(data).catch(err => 
+    {
+        throw new Error("Problems registering PDV");
+    });
 
 export default {
     pdvs,
+    pdv,
     createPdv
-}
+};

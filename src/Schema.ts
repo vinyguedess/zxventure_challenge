@@ -1,4 +1,4 @@
-import { buildSchema } from "graphql";
+import {buildSchema} from "graphql";
 
 export default buildSchema(`
     input PDVCoverageAreaInput {
@@ -16,18 +16,33 @@ export default buildSchema(`
         owner_name: String,
         document: String,
         address: PDVAddressInput
-        coverage_area: [[PDVCoverageAreaInput]]
+        coverage_area: [PDVCoverageAreaInput]
+    }
+
+    type PDVAddress {
+        id: ID!,
+        latitude: Float,
+        longitude: Float
+    }
+
+    type PDVCoverageArea {
+        id: ID!,
+        latitude: Float,
+        longitude: Float
     }
 
     type PDV {
         id: ID!,
         trading_name: String,
         owner_name: String,
-        document: String
+        document: String,
+        address: PDVAddress
+        coverageArea: [PDVCoverageArea]
     }
 
     type Query {
-        pdvs: [PDV]
+        pdvs: [PDV],
+        pdv(id: Int): PDV
     }
 
     type Mutation {

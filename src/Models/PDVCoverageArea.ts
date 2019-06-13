@@ -1,17 +1,31 @@
-import Sequelize from "sequelize"
-import Database from "../Configurations/Database";
+import {
+    Model,
+    Column,
+    PrimaryKey,
+    AutoIncrement,
+    AllowNull,
+    DataType,
+    Table,
+    ForeignKey
+} from "sequelize-typescript";
+import PDV from "./PDV";
 
-export default class PDVCoverageArea extends Sequelize.Model {}
-PDVCoverageArea.init({
-    latitude: {
-        type: Sequelize.FLOAT,
-        allowNull: false
-    },
-    longitude: {
-        type: Sequelize.FLOAT,
-        allowNull: false
-    }
-}, {
-    sequelize: Database,
-    modelName: "pdv_coverage_area"
-});
+@Table({modelName: "pdv_coverage_area"})
+export default class PDVCoverageArea extends Model<PDVCoverageArea> 
+{
+    @PrimaryKey
+    @AutoIncrement
+    @Column(DataType.INTEGER)
+    id: number;
+
+    @AllowNull(false)
+    @Column(DataType.FLOAT)
+    latitude: number;
+
+    @AllowNull(false)
+    @Column(DataType.FLOAT)
+    longitude: number;
+
+    @ForeignKey(() => PDV)
+    pdv: PDV;
+}

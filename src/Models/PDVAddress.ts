@@ -1,21 +1,31 @@
-import Sequelize from "sequelize";
-import Database from "../Configurations/Database";
+import PDV from "./PDV";
+import {
+    Model,
+    PrimaryKey,
+    AutoIncrement,
+    Table,
+    Column,
+    DataType,
+    AllowNull,
+    ForeignKey
+} from "sequelize-typescript";
 
-export default class PDVAddress extends Sequelize.Model {}
-PDVAddress.init({
-    type: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    latitude: {
-        type: Sequelize.FLOAT,
-        allowNull: false
-    },
-    longitude: {
-        type: Sequelize.FLOAT,
-        allowNull: false
-    }
-}, {
-    sequelize: Database,
-    modelName: "pdb_address"
-})
+@Table({tableName: "pdv_address"})
+export default class PDVAddress extends Model<PDVAddress> 
+{
+    @PrimaryKey
+    @AutoIncrement
+    @Column(DataType.INTEGER)
+    id: number;
+
+    @AllowNull(false)
+    @Column(DataType.FLOAT)
+    latitude: number;
+
+    @AllowNull(false)
+    @Column(DataType.FLOAT)
+    longitude: number;
+
+    @ForeignKey(() => PDV)
+    pdv: PDV;
+}

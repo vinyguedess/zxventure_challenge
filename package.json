@@ -6,7 +6,10 @@
     "express": "^4.17.1",
     "express-graphql": "^0.8.0",
     "graphql": "^14.3.1",
+    "reflect-metadata": "^0.1.13",
     "sequelize": "^5.8.9",
+    "sequelize-cli": "^5.5.0",
+    "sequelize-typescript": "^0.6.11",
     "supertest": "^4.0.2"
   },
   "devDependencies": {
@@ -49,9 +52,9 @@
     "all": true,
     "exclude": [
       ".nyc_output",
+      "app",
       "coverage",
-      "index.js",
-      "lib",
+      "server.js",
       "node_modules",
       "test"
     ],
