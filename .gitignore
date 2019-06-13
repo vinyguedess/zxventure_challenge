@@ -1,5 +1,10 @@
 # App files and folders
+*.sqlite3
+.env
+.nyc_output
+coverage
 node_modules
+yarn-error.log
 
 # OS and IDE files and folders
 .idea
