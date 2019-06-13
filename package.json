@@ -1,0 +1,67 @@
+{
+  "name": "zxventures_challenge",
+  "description": "ZXVenture PDV's listing challenge",
+  "version": "1.0.0",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-graphql": "^0.8.0",
+    "sequelize": "^5.8.9"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.3",
+    "@babel/core": "^7.4.3",
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/plugin-proposal-decorators": "^7.4.0",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-typescript": "^7.3.3",
+    "@babel/register": "^7.4.0",
+    "@types/chai": "^4.1.7",
+    "@types/express": "^4.17.0",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.0.4",
+    "@types/sequelize": "^4.28.3",
+    "@types/sinon": "^7.0.12",
+    "@typescript-eslint/eslint-plugin": "^1.9.0",
+    "@typescript-eslint/parser": "^1.9.0",
+    "babel-eslint": "^10.0.1",
+    "chai": "^4.2.0",
+    "dotenv": "^8.0.0",
+    "eslint": "^5.16.0",
+    "husky": "^2.0.0",
+    "lint-staged": "^8.1.5",
+    "mocha": "^6.1.4",
+    "nyc": "^14.0.0",
+    "sinon": "^7.3.2",
+    "ts-node": "^8.2.0",
+    "typescript": "^3.5.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "./node_modules/.bin/lint-staged"
+    }
+  },
+  "nyc": {
+    "all": true,
+    "exclude": [
+      ".nyc_output",
+      "coverage",
+      "index.js",
+      "lib",
+      "node_modules",
+      "test"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "reporter": [
+      "html",
+      "lcov",
+      "text"
+    ]
+  },
+  "scripts": {
+    "build": "./node_modules/.bin/babel src -d app --extensions .ts",
+    "lint": "./node_modules/.bin/eslint src/ --fix --ext .ts",
+    "test": "./node_modules/.bin/nyc ./node_modules/.bin/mocha"
+  }
+}
