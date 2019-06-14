@@ -11,7 +11,6 @@ export default class PDVService extends BaseDBService
     public async save(data) 
     {
         const pdv = await super.save(data, false);
-        if (!pdv) return null;
 
         const address = new PDVAddress(data.address);
         await Promise.all([
@@ -30,12 +29,10 @@ export default class PDVService extends BaseDBService
 
         return {
             ...instance.dataValues,
-            address: instance.dataValues.address
-                ? instance.dataValues.address.dataValues
-                : null,
-            coverageArea: instance.dataValues.coverageArea
-                ? instance.dataValues.coverageArea.map(area => area.dataValues)
-                : []
+            address: instance.dataValues.address,
+            coverageArea: instance.dataValues.coverageArea.map(
+                area => area.dataValues
+            )
         };
     }
 }
