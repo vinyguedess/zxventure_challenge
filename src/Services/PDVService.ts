@@ -12,7 +12,7 @@ export default class PDVService extends BaseDBService
     {
         const pdv = await super.save(data, false);
 
-        const address = new PDVAddress(data.address);
+        const address = PDVAddress.build(data.address);
         await Promise.all([
             address.save().then(() => pdv.$set("address", address)),
             Promise.all(
@@ -29,10 +29,20 @@ export default class PDVService extends BaseDBService
 
         return {
             ...instance.dataValues,
-            address: instance.dataValues.address,
-            coverageArea: instance.dataValues.coverageArea.map(
-                area => area.dataValues
-            )
+            address: {
+                type: "Point",
+                coordinates: [
+                    instance.dataValues.address.dataValues.latitude,
+                    instance.dataValues.address.dataValues.longitude
+                ]
+            },
+            coverageArea: {
+                type: "Polygon",
+                coordinates: instance.dataValues.coverageArea.map(area => [
+                    area.dataValues.latitude,
+                    area.dataValues.longitude
+                ])
+            }
         };
     }
 }

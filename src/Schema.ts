@@ -20,15 +20,13 @@ export default buildSchema(`
     }
 
     type PDVAddress {
-        id: ID!,
-        latitude: Float,
-        longitude: Float
+        type: String,
+        coordinates: [Float]
     }
 
     type PDVCoverageArea {
-        id: ID!,
-        latitude: Float,
-        longitude: Float
+        type: String,
+        coordinates: [[Float]]
     }
 
     type PDV {
@@ -36,8 +34,8 @@ export default buildSchema(`
         trading_name: String,
         owner_name: String,
         document: String,
-        address: PDVAddress
-        coverageArea: [PDVCoverageArea]
+        address: PDVAddress,
+        coverageArea: PDVCoverageArea
     }
 
     type Query {
