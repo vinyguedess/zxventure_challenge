@@ -30,3 +30,12 @@ To run project in development mode you need to globally install [nodemon](https:
 ```bash
 yarn dev
 ```
+
+### Production mode
+
+To run project iin production mode you need to have [docker-compose](https://docs.docker.com/compose/install/) installed. That will permit you serving up full environment with Web and Database server.
+
+```bash
+docker-compose build
+docker-compose up -d
+```

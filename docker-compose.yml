@@ -1,0 +1,26 @@
+version: "3.7"
+
+services:
+  web:
+    links:
+      - db:dbserver
+    build: .
+    environment:
+      DB_DRIVER: mysql
+      DB_HOST: dbserver
+      DB_NAME: zxventure
+      DB_USER: zxventure
+      DB_PASS: pl34s3_d0nt_sh0w_th15_t0_4ny0n3
+    ports:
+      - 8080:3000
+
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: "zxventure"
+      MYSQL_USER: "zxventure"
+      MYSQL_PASSWORD: "pl34s3_d0nt_sh0w_th15_t0_4ny0n3"
+      MYSQL_ROOT_PASSWORD: "r4nd0m_r007_p455w0rd"
+    ports:
+      - 3306:3306
