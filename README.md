@@ -33,7 +33,7 @@ yarn dev
 
 ### Production mode
 
-To run project iin production mode you need to have [docker-compose](https://docs.docker.com/compose/install/) installed. That will permit you serving up full environment with Web and Database server.
+To run project in production mode you need to have [docker-compose](https://docs.docker.com/compose/install/) installed. That will permit you serving up full environment with Web and Database server.
 
 ```bash
 docker-compose build
