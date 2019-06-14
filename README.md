@@ -1,4 +1,4 @@
-![Travis (.org)](https://img.shields.io/travis/vinyguedess/zxventure_challenge.svg?label=TravisCI)
+[![Travis (.org)](https://img.shields.io/travis/vinyguedess/zxventure_challenge.svg?label=TravisCI)](https://travis-ci.org/vinyguedess/zxventure_challenge)
 [![Maintainability](https://api.codeclimate.com/v1/badges/2c675a56fdc008ba8370/maintainability)](https://codeclimate.com/github/vinyguedess/zxventure_challenge/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/2c675a56fdc008ba8370/test_coverage)](https://codeclimate.com/github/vinyguedess/zxventure_challenge/test_coverage)
 
