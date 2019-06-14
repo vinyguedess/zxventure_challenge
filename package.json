@@ -70,6 +70,7 @@
   },
   "scripts": {
     "build": "./node_modules/.bin/babel src -d app --extensions .ts",
+    "dev": "nodemon",
     "lint": "./node_modules/.bin/eslint src/ --fix --ext .ts",
     "test": "./node_modules/.bin/nyc ./node_modules/.bin/mocha",
     "start": "node server.js"
