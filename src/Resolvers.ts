@@ -1,6 +1,7 @@
 import PDVService from "./Services/PDVService";
 
-const pdvs = () => new PDVService().findAll();
+const pdvs = ({coordinates, limit, offset}) =>
+    new PDVService().findAll(limit || 100, offset || 0, coordinates);
 
 const pdv = obj => new PDVService().findById(obj.id);
 

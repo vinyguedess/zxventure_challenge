@@ -16,11 +16,13 @@ export default abstract class BaseDBService
             .then(() => (parse ? this.parseInstanceData(instance) : instance));
     }
 
-    public findAll() 
+    public findAll(limit: number, offset: number) 
     {
         return this.model
             .findAll({
-                include: this.include
+                include: this.include,
+                limit,
+                offset
             })
             .then(pdvs => pdvs.map(this.parseInstanceData));
     }

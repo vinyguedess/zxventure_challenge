@@ -39,7 +39,7 @@ export default buildSchema(`
     }
 
     type Query {
-        pdvs: [PDV],
+        pdvs(limit: Int, offset: Int, coordinates: [Int]): [PDV],
         pdv(id: Int): PDV
     }
 

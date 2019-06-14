@@ -76,7 +76,9 @@ describe("Test/Unit/PDVServiceTest", (): void =>
                 owner_name: "Hello",
                 document: "19381293821"
             });
-            pdv.dataValues.address = null;
+            pdv.dataValues.address = {
+                dataValues: {latitude: 10, longitude: 20}
+            };
             pdv.dataValues.coverageArea = [];
 
             const stubPDVFindAll = sinon
@@ -85,7 +87,32 @@ describe("Test/Unit/PDVServiceTest", (): void =>
 
             const service: PDVService = new PDVService();
 
-            return service.findAll().then(pdvs => 
+            return service.findAll(100, 0).then(pdvs => 
+            {
+                expect(pdvs).to.be.lengthOf(1);
+                stubPDVFindAll.restore();
+            });
+        });
+
+        it("Should list PDVs ordered by nearest", (): Promise<void> => 
+        {
+            const pdv: PDV = PDV.build({
+                trading_name: "World",
+                owner_name: "Hello",
+                document: "19381293821"
+            });
+            pdv.dataValues.address = {
+                dataValues: {latitude: 10, longitude: 20}
+            };
+            pdv.dataValues.coverageArea = [];
+
+            const stubPDVFindAll = sinon
+                .stub(PDV, "findAll")
+                .callsFake((): any => Promise.resolve([pdv]));
+
+            const service: PDVService = new PDVService();
+
+            return service.findAll(100, 0, [10, 20]).then(pdvs => 
             {
                 expect(pdvs).to.be.lengthOf(1);
                 stubPDVFindAll.restore();
@@ -102,7 +129,9 @@ describe("Test/Unit/PDVServiceTest", (): void =>
                 owner_name: "Hello",
                 document: "19381293821"
             });
-            pdv.dataValues.address = null;
+            pdv.dataValues.address = {
+                dataValues: {latitude: 10, longitude: 20}
+            };
             pdv.dataValues.coverageArea = [];
 
             const stubPDVFind = sinon
