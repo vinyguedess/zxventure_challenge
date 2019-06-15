@@ -39,3 +39,24 @@ To run project in production mode you need to have [docker-compose](https://docs
 docker-compose build
 docker-compose up -d
 ```
+
+## How To ?
+
+All types are defined at [Schema](/src/Schema.ts), where you have detailed information on API Query and Mutation. Below is and example of how fetching a list of PDVs ordered by nearest you.
+
+```graphql
+{
+  pdvs(coordinates: [-23.1203123, -46.103123]) {
+    id
+    owner_name
+    address {
+      type
+      coordinates
+    }
+    coverageArea {
+      type
+      coordinates
+    }
+  }
+}
+```
