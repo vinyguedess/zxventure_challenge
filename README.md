@@ -26,6 +26,7 @@ yarn # or npm install
 ### Development mode
 
 To run project in development mode you need to globally install [nodemon](https://nodemon.io/), that will allow with server refresh on files changes.
+Then you need to create a .env file based on [.env.default](/.env.default) filling with your desired database connection, default is [SQLite](https://www.sqlite.org/index.html).
 
 ```bash
 yarn dev
