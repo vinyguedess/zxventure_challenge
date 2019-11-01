@@ -8,7 +8,7 @@
     "graphql": "^14.3.1",
     "mysql2": "^1.6.5",
     "reflect-metadata": "^0.1.13",
-    "sequelize": "^5.8.9",
+    "sequelize": "^5.15.1",
     "sequelize-cli": "^5.5.0",
     "sequelize-typescript": "^0.6.11",
     "supertest": "^4.0.2"
